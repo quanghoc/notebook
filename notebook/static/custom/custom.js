@@ -80,3 +80,29 @@
  * @class customjs
  * @static
  */
+
+
+define([
+    'base/js/namespace',
+    'base/js/events'
+], function(IPython, events) {
+    events.on('select.Cell', function(e, selectedCell){
+      console.log('events.on: select.Cell');
+      console.log(e);
+      console.log(selectedCell);
+
+      var selectedCellIndex = Jupyter.notebook.find_cell_index(selectedCell.cell);
+
+      console.log('Find Cell Index = ' + selectedCellIndex); 
+
+      if (selectedCellIndex == 1) {
+        var Exercise1 = document.getElementById('Exercise1');
+        var Exercise1Pos = Exercise1.offsetTop;
+        document.getElementsByClassName('sidebar')[0].scrollTop = Exercise1Pos;
+
+      }
+      
+      setTimeout(function() {
+      }, 1000);
+    });
+});

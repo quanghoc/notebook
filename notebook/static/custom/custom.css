@@ -5,3 +5,39 @@ mainly to be overridden in profile/static/custom/custom.css
 
 This will always be an empty file in IPython
 */
+
+#site {
+  width: 50%;
+}
+
+#notebook-container { 
+  padding: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+div.cell {
+  padding: 0;
+}
+
+div.cell.selected {
+  border-color: transparent;
+  border-width: 0; 
+}
+
+div.input_area {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+
+.sidebar {
+  position: fixed;
+  background: yellow;
+  right: 0;
+  bottom: 0;
+  top: 50px;
+  width: 50%;
+  overflow: scroll;
+}
