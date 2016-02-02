@@ -84,8 +84,9 @@
 
 define([
     'base/js/namespace',
-    'base/js/events'
-], function(IPython, events) {
+    'base/js/events',
+    'jquery.scrollTo'
+], function(IPython, events, scrollTo) {
     events.on('select.Cell', function(e, selectedCell){
       console.log('events.on: select.Cell');
       console.log(e);
@@ -96,9 +97,11 @@ define([
       console.log('Find Cell Index = ' + selectedCellIndex); 
 
       if (selectedCellIndex == 1) {
-        var Exercise1 = document.getElementById('Exercise1');
-        var Exercise1Pos = Exercise1.offsetTop;
-        document.getElementsByClassName('sidebar')[0].scrollTop = Exercise1Pos;
+        // var Exercise1 = document.getElementById('Exercise1');
+        // var Exercise1Pos = Exercise1.offsetTop;
+        // document.getElementsByClassName('sidebar')[0].scrollTop = Exercise1Pos;
+
+        $('.sidebar').scrollTo(document.getElementById('Exercise1'), 800);
 
       }
       

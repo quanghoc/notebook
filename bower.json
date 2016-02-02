@@ -11,6 +11,7 @@
     "google-caja": "5669",
     "jquery": "components/jquery#~2.0",
     "jquery-ui": "components/jqueryui#~1.10",
+    "jquery.scrollTo": "2.1.2",
     "marked": "~0.3",
     "MathJax": "components/MathJax#~2.5",
     "moment": "~2.8.4",

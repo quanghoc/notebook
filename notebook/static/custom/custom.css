@@ -40,4 +40,5 @@ div.input_area {
   top: 50px;
   width: 50%;
   overflow: scroll;
+  padding: 15px;
 }
