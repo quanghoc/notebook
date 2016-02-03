@@ -19,6 +19,7 @@ var rjs_config = {
     bootstrap: 'components/bootstrap/js/bootstrap.min',
     bootstraptour: 'components/bootstrap-tour/build/js/bootstrap-tour.min',
     "jquery-ui": 'components/jquery-ui/ui/minified/jquery-ui.min',
+    'jquery.scrollTo': 'components/jquery.scrollTo/jquery.scrollTo.min',
     moment: 'components/moment/moment',
     codemirror: 'components/codemirror',
     termjs: 'components/term.js/src/term',
@@ -49,6 +50,10 @@ var rjs_config = {
     bootstraptour: {
       deps: ["bootstrap"],
       exports: "Tour"
+    },
+    'jquery.scrollTo': {
+      deps: ["jquery"],
+      exports: "scrollTo"
     },
     "jquery-ui": {
       deps: ["jquery"],

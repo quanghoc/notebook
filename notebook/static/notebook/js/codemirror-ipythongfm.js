@@ -11,12 +11,14 @@
   if (typeof exports == "object" && typeof module == "object"){ // CommonJS
     mod(require("codemirror/lib/codemirror")
         ,require("codemirror/addon/mode/multiplex")
+        ,require("codemirror/addon/selection/active-line")
         ,require("codemirror/mode/gfm/gfm")
         ,require("codemirror/mode/stex/stex")
         );
   } else if (typeof define == "function" && define.amd){ // AMD
     define(["codemirror/lib/codemirror"
             ,"codemirror/addon/mode/multiplex"
+            ,"codemirror/addon/selection/active-line"
             ,"codemirror/mode/python/python"
             ,"codemirror/mode/stex/stex"
             ], mod);

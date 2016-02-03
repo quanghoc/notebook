@@ -91,6 +91,7 @@ define([
       console.log('events.on: select.Cell');
       console.log(e);
       console.log(selectedCell);
+      console.log('Total line: ' + selectedCell.cell.code_mirror.getDoc().lineCount());
 
       var selectedCellIndex = Jupyter.notebook.find_cell_index(selectedCell.cell);
 

@@ -42,6 +42,7 @@
             'jquery.scrollTo': 'components/jquery.scrollTo/jquery.scrollTo.min',
             moment: 'components/moment/moment',
             codemirror: 'components/codemirror',
+            // 'codemirror-selection': 'components/codemirror/addon/selection/active-line',
             termjs: 'components/term.js/src/term',
             typeahead: 'components/jquery-typeahead/dist/jquery.typeahead'
           },
@@ -70,6 +71,10 @@
               deps: ["bootstrap"],
               exports: "Tour"
             },
+            // 'codemirror-selection': {
+            //   deps: ["codemirror"],
+            //   exports: "codemirrorSelection"
+            // },
             'jquery.scrollTo': {
               deps: ["jquery"],
               exports: "scrollTo"
@@ -107,7 +112,7 @@
 
 <div id="header">
   <div id="header-container" class="container">
-  <div id="ipython_notebook" class="nav navbar-brand pull-left"><a href="{{default_url}}" title='dashboard'>{% block logo %}<img src='{{static_url("base/images/logo.png") }}' alt='Jupyter Notebook'/>{% endblock %}</a></div>
+  <div id="ipython_notebook" class="nav navbar-brand pull-left"><a href="{{default_url}}" title='dashboard'>{% block logo %}<img src='{{static_url("base/images/logo.png") }}' alt='Jupyter Notebook' class="hide"/>{% endblock %}</a></div>
 
   {% block header_buttons %}
   

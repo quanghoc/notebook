@@ -20,6 +20,7 @@ define([
     'notebook/js/completer',
     'notebook/js/celltoolbar',
     'codemirror/lib/codemirror',
+    // 'codemirror-selection',
     'codemirror/mode/python/python',
     'notebook/js/codemirror-ipython'
 ], function(IPython,
@@ -32,6 +33,7 @@ define([
     completer,
     celltoolbar,
     CodeMirror,
+    // codemirrorSelection,
     cmpython,
     cmip
     ) {
@@ -133,7 +135,10 @@ define([
             },
             mode: 'text',
             theme: 'ipython',
+            styleActiveLine: false,
+            // firstLineNumber: 3,
             matchBrackets: true,
+            lineWrapping: true,
             autoCloseBrackets: true
         },
         highlight_modes : {
@@ -170,6 +175,7 @@ define([
             notebook: this.notebook});
         inner_cell.append(this.celltoolbar.element);
         var input_area = $('<div/>').addClass('input_area');
+        console.log(this._options.cm_config);
         this.code_mirror = new CodeMirror(input_area.get(0), this._options.cm_config);
         // In case of bugs that put the keyboard manager into an inconsistent state,
         // ensure KM is enabled when CodeMirror is focused:
@@ -181,7 +187,8 @@ define([
         this.code_mirror.on('keydown', $.proxy(this.handle_keyevent,this));
         $(this.code_mirror.getInputField()).attr("spellcheck", "false");
         inner_cell.append(input_area);
-        input.append(prompt).append(inner_cell);
+        // input.append(prompt).append(inner_cell);
+        input.append(inner_cell);
 
         var output = $('<div></div>');
         cell.append(input).append(output);

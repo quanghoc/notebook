@@ -11,6 +11,9 @@
 window.mathjax_url = "{{mathjax_url}}";
 </script>
 
+<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
+
 <link rel="stylesheet" href="{{ static_url("components/bootstrap-tour/build/css/bootstrap-tour.min.css") }}" type="text/css" />
 <link rel="stylesheet" href="{{ static_url("components/codemirror/lib/codemirror.css") }}">
 
@@ -45,7 +48,7 @@ data-notebook-path="{{notebook_path | urlencode}}"
 
 <span id="kernel_logo_widget">
   {% block kernel_logo_widget %}
-  <img class="current_kernel_logo" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/>
+  <img class="current_kernel_logo hide" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/>
   {% endblock %}
 </span>
 
@@ -53,7 +56,7 @@ data-notebook-path="{{notebook_path | urlencode}}"
 
 {% block header %}
 <div id="menubar-container" class="container">
-<div id="menubar">
+<div id="menubar" class="hide">
     <div id="menus" class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
             <button type="button" class="btn btn-default navbar-btn navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
