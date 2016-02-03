@@ -112,6 +112,7 @@ define([
         cm_config : {
             indentUnit : 4,
             readOnly: false,
+            // lineWrapping: true,
             theme: "default",
             extraKeys: {
                 "Cmd-Right":"goLineRight",

@@ -15,21 +15,15 @@ This will always be an empty file in IPython
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
+  width: 100%;
 }
 
-div.cell {
-  padding: 0;
+div#notebook {
+  padding-top: 0;
 }
 
-div.cell.selected {
-  border-color: transparent;
-  border-width: 0; 
-}
-
-div.input_area {
-  border: none;
-  border-radius: 0;
-  background: transparent;
+.notebook_app {
+  background-color: #fff;
 }
 
 .sidebar {
@@ -40,5 +34,37 @@ div.input_area {
   top: 50px;
   width: 50%;
   overflow: scroll;
-  padding: 15px;
+  padding: 0 15px 15px 15px;
+  border-left: 2px solid #ddd;
 }
+
+div.cell {
+  border: 0;
+  padding: 0;
+}
+
+div.cell.selected {
+  border-color: transparent;
+  border-width: 0; 
+  padding-left: 0;
+}
+
+div.input_area {
+  border: none;
+  border-radius: 0;
+  /*background: transparent;*/
+}
+
+div.output_area {
+  background: #f7f7f7;
+}
+
+.edit_mode div.cell.selected {
+  padding-left: 0;
+}
+
+.prompt.output_prompt {
+  display: none!important;
+}
+
+
