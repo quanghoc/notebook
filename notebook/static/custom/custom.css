@@ -10,6 +10,10 @@ This will always be an empty file in IPython
   width: 50%;
 }
 
+body > #header {
+  background-color: #89C4F4;
+}
+
 #notebook-container { 
   padding: 0;
   -webkit-box-shadow: none;
@@ -34,7 +38,7 @@ div#notebook {
   top: 50px;
   width: 50%;
   overflow: scroll;
-  padding: 0 15px 15px 15px;
+  padding: 0 30px 20px 30px;
   border-left: 2px solid #ddd;
 }
 

@@ -91,18 +91,33 @@ define([
             // of the loop
             (function(i,list){
                 var el = list[i];
+                console.log('var el = list[i];');
+                console.log(el);
+
                 var action_name;
                 var action;
                 if(typeof(el) === 'string'){
                     action = that.actions.get(el);
                     action_name = el;
 
+                } else if (typeof(el) === 'object') {
+                    action = that.actions.get(el.action);
+                    action_name = el.action;
                 }
+                // var button  = $('<button/>')
+                //     .addClass('btn btn-default')
+                //     .attr("title", el.label||action.help)
+                //     .append(
+                //         $("<i/>").addClass(el.icon||(action||{icon:'fa-exclamation-triangle'}).icon).addClass('fa')
+                //     );
+
                 var button  = $('<button/>')
-                    .addClass('btn btn-default')
+                    .addClass('btn btn-lg btn-success')
                     .attr("title", el.label||action.help)
-                    .append(
-                        $("<i/>").addClass(el.icon||(action||{icon:'fa-exclamation-triangle'}).icon).addClass('fa')
+                    .text(el.label)
+                    .prepend(
+                        // $("<i/>").addClass(el.icon||(action||{icon:'fa-exclamation-triangle'}).icon).addClass('fa')
+                        $("<i/>").addClass(el.icon||(action||{icon:'fa-exclamation-triangle'}).icon).addClass('glyphicon')
                     );
                 var id = el.id;
                 if( id !== undefined ){

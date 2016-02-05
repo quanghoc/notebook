@@ -58,6 +58,15 @@ define([
          [['jupyter-notebook:show-command-palette']],
          ['<add_celltoolbar_reminder>']
         ];
+
+            // [['jupyter-notebook:run-cell-and-select-next']]
+        var grps = [
+            [[{
+                action: 'jupyter-notebook:run-cell-and-select-next',
+                icon: 'glyphicon-play',
+                label: 'Run'
+            }]]
+        ];
         this.construct(grps);
     };
    

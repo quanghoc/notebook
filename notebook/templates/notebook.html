@@ -11,8 +11,8 @@
 window.mathjax_url = "{{mathjax_url}}";
 </script>
 
-<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
+<!-- <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'> -->
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300,300italic,700,700italic' rel='stylesheet' type='text/css'>
 
 <link rel="stylesheet" href="{{ static_url("components/bootstrap-tour/build/css/bootstrap-tour.min.css") }}" type="text/css" />
 <link rel="stylesheet" href="{{ static_url("components/codemirror/lib/codemirror.css") }}">
@@ -42,9 +42,19 @@ data-notebook-path="{{notebook_path | urlencode}}"
 
 <span id="save_widget" class="pull-left save_widget">
     <span id="notebook_name" class="filename"></span>
-    <span class="checkpoint_status"></span>
-    <span class="autosave_status"></span>
+    <span class="checkpoint_status hide"></span>
+    <span class="autosave_status hide"></span>
 </span>
+
+<div id="maintoolbar" class="navbar">
+  <div class="toolbar-inner navbar-inner navbar-nobg">
+    <div id="maintoolbar-container" class="container">
+        <!--button class="btn btn-success" title="Run" data-jupyter-action="jupyter-notebook:run-cell-and-select-next">
+          <i class="glyphicon glyphicon-play-circle"></i> Run
+        </button-->
+    </div>
+  </div>
+</div>
 
 <span id="kernel_logo_widget">
   {% block kernel_logo_widget %}
@@ -306,11 +316,7 @@ data-notebook-path="{{notebook_path | urlencode}}"
     </div>
 </div>
 
-<div id="maintoolbar" class="navbar">
-  <div class="toolbar-inner navbar-inner navbar-nobg">
-    <div id="maintoolbar-container" class="container"></div>
-  </div>
-</div>
+
 </div>
 
 <div class="lower-header-bar"></div>

@@ -41,6 +41,9 @@ define([
     
     var Cell = cell.Cell;
 
+    var cellList = [];
+    var lastLines = [];
+
     /* local util for codemirror */
     var posEq = function(a, b) {return a.line === b.line && a.ch === b.ch;};
 
@@ -175,7 +178,14 @@ define([
             notebook: this.notebook});
         inner_cell.append(this.celltoolbar.element);
         var input_area = $('<div/>').addClass('input_area');
-        console.log(this._options.cm_config);
+
+        var nextLineNumber = 1;
+        // lineCounts.map(function(item) {
+        //     nextLineNumber += item;
+        // });
+        this._options.cm_config.firstLineNumber = nextLineNumber;
+
+
         this.code_mirror = new CodeMirror(input_area.get(0), this._options.cm_config);
         // In case of bugs that put the keyboard manager into an inconsistent state,
         // ensure KM is enabled when CodeMirror is focused:
@@ -186,9 +196,68 @@ define([
         });
         this.code_mirror.on('keydown', $.proxy(this.handle_keyevent,this));
         $(this.code_mirror.getInputField()).attr("spellcheck", "false");
+
         inner_cell.append(input_area);
         // input.append(prompt).append(inner_cell);
         input.append(inner_cell);
+
+        console.log('cellList');
+        console.log(cellList);
+        console.log('cellList.length');
+        console.log(cellList.length);
+
+        this.linked = {previous: cellList.length > 0 ? cellList[cellList.length-1] : undefined};
+
+        if (this.linked && this.linked.previous) {
+            this.linked.next = this;
+        }
+
+        cellList.push(this);
+
+        console.log('this:');
+        console.log(this);
+
+        console.log('this.code_mirror.getDoc().lineCount()=' + this.code_mirror.getDoc().lineCount());
+        // lineCounts.push(this.code_mirror.doc.frontier); 
+        // console.log(lineCounts);
+
+        this.code_mirror.on('changes', function(e) {
+            var lastLine = e.getDoc().lineCount();
+            console.log('CodeMirror on changes');
+            console.log(e);
+            console.log(lastLine);
+            var i = e.doc.id - 1;
+
+            if (!lastLines[i]) {
+                lastLines[i] = lastLine;
+                console.log('lastLines=' + lastLines);
+
+                var newFirstLineNumber = 1;
+                for (var n=0; n<i; n++) {
+                    newFirstLineNumber += lastLines[n];
+                }
+                console.log('newFirstLineNumber=' + newFirstLineNumber);
+                e.setOption('firstLineNumber', newFirstLineNumber);
+            } else if (lastLines[i] == lastLine) {
+                console.log('Line number doesn\'t change for cell_id ' + i);
+                return;
+            } else if (lastLines.length > i + 1) {
+                lastLines[i] = lastLine;
+                console.log('i=' + i);
+                console.log('cellList.length=' + cellList.length);
+                console.log('e.options.firstLineNumber=' + e.options.firstLineNumber);
+                console.log('e.getDoc().lastLine()' + e.getDoc().lastLine());
+                var currentLastLineNumber = e.options.firstLineNumber + e.getDoc().lastLine();
+                console.log('currentLastLineNumber=' + currentLastLineNumber);
+                while ((i<cellList.length-1) && (cellList[i+1]) && (cellList[i].code_mirror.getDoc().lineCount() > 0)) {
+                    cellList[i+1].code_mirror.setOption('firstLineNumber', currentLastLineNumber + 1);
+                    currentLastLineNumber = currentLastLineNumber + cellList[i+1].code_mirror.getDoc().lineCount();
+                    console.log('new currentLastLineNumber is ' + currentLastLineNumber);
+                    i++;
+                }
+            }
+
+        });
 
         var output = $('<div></div>');
         cell.append(input).append(output);

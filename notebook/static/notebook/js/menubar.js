@@ -239,6 +239,7 @@ define([
                 continue;
             }
             var id_act = 'jupyter-notebook:'+id_actions_dict[idx];
+            // console.log('id_act: ' + id_act);
             if(!that.actions.exists(id_act)){
                 console.warn('actions', id_act, 'does not exist, still binding it in case it will be defined later...');
             }

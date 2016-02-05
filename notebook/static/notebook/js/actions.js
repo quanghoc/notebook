@@ -111,6 +111,7 @@ define(function(require){
         'run-cell-and-select-next': {
             icon: 'fa-step-forward',
             help    : 'run cell, select below',
+            label    : 'Run',
             help_index : 'ba',
             handler : function (env) {
                 env.notebook.execute_cell_and_select_below();
