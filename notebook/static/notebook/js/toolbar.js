@@ -112,7 +112,7 @@ define([
                 //     );
 
                 var button  = $('<button/>')
-                    .addClass('btn btn-lg btn-success')
+                    .addClass('btn btn-success')
                     .attr("title", el.label||action.help)
                     .text(el.label)
                     .prepend(

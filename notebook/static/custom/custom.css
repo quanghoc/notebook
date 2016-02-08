@@ -11,7 +11,14 @@ This will always be an empty file in IPython
 }
 
 body > #header {
-  background-color: #89C4F4;
+  /*background-color: #89C4F4;*/
+  background-color: #22313F;
+  color: white;
+}
+
+body > #header #header-container {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 #notebook-container { 
@@ -31,6 +38,8 @@ div#notebook {
 }
 
 .sidebar {
+  font-family: 'Merriweather', serif;
+  font-weight: 300;
   position: fixed;
   background: white;
   right: 0;
@@ -41,6 +50,10 @@ div#notebook {
   padding: 0 30px 20px 30px;
   border-left: 2px solid #ddd;
 }
+
+/*.sidebar h1, .sidebar h2, .sidebar h3, .sidebar p {
+  font-family: 'Merriweather', serif;
+}*/
 
 div.cell {
   border: 0;
@@ -59,8 +72,18 @@ div.input_area {
   /*background: transparent;*/
 }
 
-div.output_area {
+.output_wrapper {
   background: #f7f7f7;
+}
+
+div.output_area {
+  background: white;
+  border-left: 1px solid #ddd;
+  margin-left: 34px;
+}
+
+.div.out_prompt_overlay {
+  display: none!important;
 }
 
 .edit_mode div.cell.selected {
@@ -71,4 +94,17 @@ div.output_area {
   display: none!important;
 }
 
+.CodeMirror {
+  background-color: white;
+}
 
+.CodeMirror-lines {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.CodeMirror-linenumber {
+  padding: 1px 8px 0 5px;
+  color: #c8d2d7;
+  font-size: 10px;
+}
