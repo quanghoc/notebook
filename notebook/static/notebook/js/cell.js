@@ -113,7 +113,8 @@ define([
             indentUnit : 4,
             readOnly: false,
             // lineWrapping: true,
-            theme: "default",
+            // theme: "default",
+            theme: 'atelierheath-light',
             extraKeys: {
                 "Cmd-Right":"goLineRight",
                 "End":"goLineRight",
@@ -189,6 +190,8 @@ define([
         }
         if (this.code_mirror) {
             this.code_mirror.on('focus', function(cm, change) {
+                console.log('this.code_mirror.on(focus)');
+
                 if (!that.selected) {
                     that.events.trigger('select.Cell', {'cell':that});
                 }

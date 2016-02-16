@@ -137,8 +137,9 @@ define([
                 "Ctrl-/" : "toggleComment"
             },
             mode: 'text',
-            theme: 'ipython',
-            styleActiveLine: false,
+            // theme: 'ipython',
+            theme: 'atelierheath-light',
+            styleActiveLine: true,
             // firstLineNumber: 3,
             matchBrackets: true,
             lineWrapping: true,
@@ -201,10 +202,10 @@ define([
         // input.append(prompt).append(inner_cell);
         input.append(inner_cell);
 
-        console.log('cellList');
-        console.log(cellList);
-        console.log('cellList.length');
-        console.log(cellList.length);
+        // console.log('cellList');
+        // console.log(cellList);
+        // console.log('cellList.length');
+        // console.log(cellList.length);
 
         this.linked = {previous: cellList.length > 0 ? cellList[cellList.length-1] : undefined};
 
@@ -214,41 +215,39 @@ define([
 
         cellList.push(this);
 
-        console.log('this:');
-        console.log(this);
+        // console.log('this:');
+        // console.log(this);
 
-        console.log('this.code_mirror.getDoc().lineCount()=' + this.code_mirror.getDoc().lineCount());
-        // lineCounts.push(this.code_mirror.doc.frontier); 
-        // console.log(lineCounts);
+        // console.log('this.code_mirror.getDoc().lineCount()=' + this.code_mirror.getDoc().lineCount());
 
         this.code_mirror.on('changes', function(e) {
             var lastLine = e.getDoc().lineCount();
-            console.log('CodeMirror on changes');
-            console.log(e);
-            console.log(lastLine);
+            // console.log('CodeMirror on changes');
+            // console.log(e);
+            // console.log(lastLine);
             var i = e.doc.id - 1;
 
             if (!lastLines[i]) {
                 lastLines[i] = lastLine;
-                console.log('lastLines=' + lastLines);
+                // console.log('lastLines=' + lastLines);
 
                 var newFirstLineNumber = 1;
                 for (var n=0; n<i; n++) {
                     newFirstLineNumber += lastLines[n];
                 }
-                console.log('newFirstLineNumber=' + newFirstLineNumber);
+                // console.log('newFirstLineNumber=' + newFirstLineNumber);
                 e.setOption('firstLineNumber', newFirstLineNumber);
             } else if (lastLines[i] == lastLine) {
                 console.log('Line number doesn\'t change for cell_id ' + i);
                 return;
             } else if (lastLines.length > i + 1) {
                 lastLines[i] = lastLine;
-                console.log('i=' + i);
-                console.log('cellList.length=' + cellList.length);
-                console.log('e.options.firstLineNumber=' + e.options.firstLineNumber);
-                console.log('e.getDoc().lastLine()' + e.getDoc().lastLine());
+                // console.log('i=' + i);
+                // console.log('cellList.length=' + cellList.length);
+                // console.log('e.options.firstLineNumber=' + e.options.firstLineNumber);
+                // console.log('e.getDoc().lastLine()' + e.getDoc().lastLine());
                 var currentLastLineNumber = e.options.firstLineNumber + e.getDoc().lastLine();
-                console.log('currentLastLineNumber=' + currentLastLineNumber);
+                // console.log('currentLastLineNumber=' + currentLastLineNumber);
                 while ((i<cellList.length-1) && (cellList[i+1]) && (cellList[i].code_mirror.getDoc().lineCount() > 0)) {
                     cellList[i+1].code_mirror.setOption('firstLineNumber', currentLastLineNumber + 1);
                     currentLastLineNumber = currentLastLineNumber + cellList[i+1].code_mirror.getDoc().lineCount();

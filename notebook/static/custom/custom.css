@@ -7,7 +7,7 @@ This will always be an empty file in IPython
 */
 
 #site {
-  width: 50%;
+  width: 60%;
 }
 
 body > #header {
@@ -45,10 +45,14 @@ div#notebook {
   right: 0;
   bottom: 0;
   top: 50px;
-  width: 50%;
+  width: 40%;
   overflow: scroll;
   padding: 0 30px 20px 30px;
   border-left: 2px solid #ddd;
+}
+
+.sidebar li, .sidebar p {
+  margin-bottom: 10px;
 }
 
 /*.sidebar h1, .sidebar h2, .sidebar h3, .sidebar p {
@@ -82,7 +86,7 @@ div.output_area {
   margin-left: 34px;
 }
 
-.div.out_prompt_overlay {
+div.out_prompt_overlay {
   display: none!important;
 }
 
@@ -105,6 +109,53 @@ div.output_area {
 
 .CodeMirror-linenumber {
   padding: 1px 8px 0 5px;
+  left: -0.7em!important;
   color: #c8d2d7;
   font-size: 10px;
+  text-align: right;
+}
+
+.rendered .CodeMirror-gutters {
+  border-right: 2px solid #26A65B; /*green;*/
+  background-color: rgba(38,166,91,0.15);
+}
+
+.rendered .CodeMirror-linenumber {
+  color: #26A65B;
+}
+
+.selected .CodeMirror-gutters {
+  border-right: 2px solid #4183D7; /*blue;*/
+  background-color: rgba(65,131,215,0.15);
+}
+
+.selected .CodeMirror-linenumber {
+  color: #4183D7;
+
+}
+
+.selected .CodeMirror-gutters .CodeMirror-gutter, .rendered .CodeMirror-gutters .CodeMirror-gutter {
+  width: 33px!important;
+}
+
+.selected .CodeMirror-activeline .CodeMirror-linenumber {
+  background-color: rgba(65,131,215,0.3);
+}
+
+.CodeMirror-activeline-background {
+  background-color: transparent;
+}
+
+/*.CodeMirror-activeline {
+  left: -0.4em;
+  padding-left: 0.4em;
+}*/
+
+/*.CodeMirror-activeline .CodeMirror-gutter-wrapper {
+  left: -29.5px!important;
+}*/
+
+
+div.output_subarea {
+  max-width: 100%;
 }

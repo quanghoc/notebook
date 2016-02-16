@@ -87,26 +87,27 @@ define([
     'base/js/events',
     'jquery.scrollTo'
 ], function(IPython, events, scrollTo) {
-    events.on('select.Cell', function(e, selectedCell){
-      console.log('events.on: select.Cell');
-      console.log(e);
-      console.log(selectedCell);
-      console.log('Total line: ' + selectedCell.cell.code_mirror.getDoc().lineCount());
+    events.on('edit_mode.Cell', function(e, selectedCell){
+      // console.log('events.on: select.Cell');
+      // console.log(e);
+      // console.log(selectedCell);
+      // console.log('Total line: ' + selectedCell.cell.code_mirror.getDoc().lineCount());
 
-      var selectedCellIndex = Jupyter.notebook.find_cell_index(selectedCell.cell);
+      var selectedCellIndex = Jupyter.notebook.find_cell_index(selectedCell.cell) + 1,
+          targetCellNote = document.getElementById('cellNote_' + selectedCellIndex);
 
       console.log('Find Cell Index = ' + selectedCellIndex); 
 
-      if (selectedCellIndex == 1) {
-        // var Exercise1 = document.getElementById('Exercise1');
-        // var Exercise1Pos = Exercise1.offsetTop;
-        // document.getElementsByClassName('sidebar')[0].scrollTop = Exercise1Pos;
+      // if (selectedCellIndex == 1) {
+      //   // var Exercise1 = document.getElementById('Exercise1');
+      //   // var Exercise1Pos = Exercise1.offsetTop;
+      //   // document.getElementsByClassName('sidebar')[0].scrollTop = Exercise1Pos;
 
-        $('.sidebar').scrollTo(document.getElementById('Exercise1'), 800);
 
-      }
+      // }
+      $('.sidebar').scrollTo(targetCellNote, 800);
       
-      setTimeout(function() {
-      }, 1000);
+      // setTimeout(function() {
+      // }, 1000);
     });
 });
